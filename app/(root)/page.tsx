@@ -1,24 +1,19 @@
-
 import { Button } from "@/components/ui/button";
-import {
-  getUserIdByClerkId,
-  isRedditFieldEmpty,
-} from "@/lib/database/actions/user";
+import { isRedditFieldEmpty } from "@/lib/database/actions/user";
 import { auth } from "@clerk/nextjs/server";
 
 export default async function Home() {
   const { userId } = auth();
 
-  if(userId) {
+  if (userId) {
     const isEmpty = await isRedditFieldEmpty(userId);
-  
+
     return <div>dw</div>;
   } else {
     return (
       <div>
         <Button>Connect an account</Button>
       </div>
-    )
+    );
   }
-
 }
